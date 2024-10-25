@@ -91,7 +91,7 @@ def generate_diet_plan(calories: float, follow_up: dict) -> dict:
         "exercise": []
     }
 
-    # Example logic to create a diet plan
+    # create a diet plan
     if calories > 2000:
         diet_plan["meals"]["breakfast"].append("Oatmeal with fruits")
         diet_plan["meals"]["lunch"].append("Grilled chicken salad")
@@ -105,7 +105,6 @@ def generate_diet_plan(calories: float, follow_up: dict) -> dict:
         diet_plan["meals"]["snacks"].append("Carrot sticks with hummus")
         diet_plan["exercise"].append("30 minutes of brisk walking")
 
-    # You can refine the diet plan based on the follow-up answers
     if follow_up.get("What are your favorite foods?"):
         favorite_foods = follow_up["What are your favorite foods?"].split(',')
         diet_plan["meals"]["lunch"].extend(favorite_food.strip() for favorite_food in favorite_foods)
@@ -123,7 +122,7 @@ while True:
     calorie_output = chain.invoke(user_input)
     print("Calorie Calculation Output:", calorie_output)
 
-    # Now ask the follow-up questions
+    # Ask the follow-up questions
     follow_up_answers = ask_questions()
     print("Follow-up Answers:", follow_up_answers)
 
